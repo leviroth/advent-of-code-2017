@@ -10,7 +10,8 @@ let no_duplicates comparator l =
   in aux init l
 
 let print_result valid =
-  In_channel.with_file "input.txt" ~f:(
-    In_channel.fold_lines ~init:0 ~f:(fun count next_line ->
-        count + if valid next_line then 1 else 0))
+  "input.txt"
+  |> In_channel.read_lines
+  |> List.filter ~f:valid
+  |> List.length
   |> Out_channel.printf "%d\n"
