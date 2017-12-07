@@ -2,13 +2,9 @@ open Base
 open Stdio
 
 module T = struct
-  type t = {contents: (int, int, Int.comparator_witness) Map.t; size: int}
-
-  let compare a b = Map.compare_direct Int.compare a.contents b.contents
-
-  let sexp_of_t {contents} =
-    Map.sexp_of_m__t (module Int) sexp_of_int contents
-
+  type t =
+    {contents: int Map.M(Int).t; size: int}
+    [@@deriving compare, sexp_of]
 end
 
 include T
