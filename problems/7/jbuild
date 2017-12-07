@@ -1,0 +1,10 @@
+(jbuild_version 1)
+
+(executables
+ ((names        (part_1))
+  (preprocess (pps (ppx_jane)))
+  (libraries (core_kernel))))
+
+(ocamllex (lexer))
+
+(menhir ((modules (parser))))
