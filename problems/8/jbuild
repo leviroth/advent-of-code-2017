@@ -3,7 +3,7 @@
 (executables
  ((names        (part_1 part_2))
   (preprocess (pps (ppx_jane)))
-  (libraries (core_kernel))))
+  (libraries (base stdio))))
 
 (ocamllex (lexer))
 

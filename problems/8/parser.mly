@@ -1,5 +1,4 @@
 %{
-open Core_kernel
 open Instruction
 %}
 
