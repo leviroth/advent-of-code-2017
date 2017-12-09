@@ -1,13 +1,8 @@
-type direction = Increase | Decrease
-type relation = Lt | Gt | Le | Ge | Ne | Eq
-
 type action = {a_register: string;
-               direction: direction;
-               amount: int}
+               a_function: int -> int}
 
 type condition = {c_register: string;
-                  relation: relation;
-                  value: int}
+                  c_predicate: int -> bool}
 
 type t = {action: action;
           condition: condition}

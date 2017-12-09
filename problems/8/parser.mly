@@ -29,23 +29,21 @@ line:
 action:
 | target = REGISTER; direction = direction; amount = NUMBER;
   { {a_register = target;
-     direction;
-     amount} }
+     a_function = fun x -> direction x amount} }
 
 condition:
 | IF; c = REGISTER; relation = relation; value = NUMBER
   { { c_register = c;
-      relation;
-      value} }
+      c_predicate = fun x -> relation x value} }
 
 direction:
-| INC { Increase }
-| DEC { Decrease }
+| INC { (+) }
+| DEC { (-) }
 
 relation:
-| LT { Lt }
-| GT { Gt }
-| LE { Le }
-| GE { Ge }
-| NE { Ne }
-| EQ { Eq }
+| LT { (<) }
+| GT { (>) }
+| LE { (<=) }
+| GE { (>=) }
+| NE { (<>) }
+| EQ { (=) }
