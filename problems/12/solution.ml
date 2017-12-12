@@ -16,6 +16,17 @@ module Graph = struct
     in
     aux graph source visited 0
 
+
+  let partition graph =
+    let sources = Map.keys graph in
+    let all_visited = Set.Using_comparator.empty (Map.comparator graph) in
+    List.fold sources ~init:(all_visited, 0) ~f:
+      (fun (all_visited, count) next ->
+        if Set.mem all_visited next then (all_visited, count)
+        else
+          let new_graph, _ = dfs graph ~source:next in
+          (Set.union all_visited new_graph, count + 1) )
+
 end
 
 let parse lexbuf = Parser.lines Lexer.read lexbuf
@@ -31,6 +42,8 @@ let build_graph lines = Graph.of_alist_exn (module Int) lines
 
 let () =
   let filename = Caml.Sys.argv.(1) in
-  process_file filename |> build_graph
-  |> Graph.dfs ~source:0 |> fun (_, count) -> printf "%d\n" count
+  let graph = process_file filename |> build_graph in
+  let _, part_1_count = Graph.dfs graph ~source:0 in
+  let _, part_2_count = Graph.partition graph in
+  printf "Part 1: %d\nPart 2: %d\n" part_1_count part_2_count
 
