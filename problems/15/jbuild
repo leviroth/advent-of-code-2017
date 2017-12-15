@@ -1,6 +1,6 @@
 (jbuild_version 1)
 
 (executables
- ((names        (solution))
+ ((names        (part_1 part_2))
   (flags (:standard -short-paths))
   (libraries (base stdio))))
