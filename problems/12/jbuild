@@ -3,7 +3,7 @@
 (executables
  ((names        (solution))
   (flags (:standard -short-paths))
-  (libraries (base stdio))))
+  (libraries (base stdio common))))
 
 (ocamllex (lexer))
 

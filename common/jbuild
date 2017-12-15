@@ -1,0 +1,6 @@
+(jbuild_version 1)
+
+(library
+ ((name       common)
+  (flags      (:standard -short-paths))
+  (libraries  (base stdio))))

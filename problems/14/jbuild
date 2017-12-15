@@ -4,4 +4,4 @@
  ((names        (solution))
   (flags (:standard -short-paths))
   (preprocess (pps (ppx_jane)))
-  (libraries (base stdio stdint))))
+  (libraries (base stdio stdint common))))
