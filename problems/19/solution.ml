@@ -50,14 +50,14 @@ let next_step grid coord direction =
   | _ -> None
 
 
-let rec loop grid coord direction acc =
+let rec loop grid coord direction acc count =
   let next_acc =
     let c = (grid.contents).(snd coord).(fst coord) in
     if Char.is_alpha c then c :: acc else acc
   in
   match next_step grid coord direction with
-  | Some (coord, direction) -> loop grid coord direction next_acc
-  | None -> String.of_char_list (List.rev next_acc)
+  | Some (coord, direction) -> loop grid coord direction next_acc (count + 1)
+  | None -> String.of_char_list (List.rev next_acc), count
 
 
 let load_file filename =
@@ -75,5 +75,6 @@ let () =
     Array.findi (grid.contents).(0) (fun _ c -> Char.equal c '|')
     |> Option.value_exn |> fst
   in
-  loop grid (starting_x, 0) south [] |> printf "%s\n"
+  let part_1, part_2 = loop grid (starting_x, 0) south [] 1 in
+  printf "Part 1: %s\nPart 2: %d\n" part_1 part_2
 
