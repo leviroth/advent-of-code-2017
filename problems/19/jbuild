@@ -1,0 +1,7 @@
+(jbuild_version 1)
+
+(executables
+ ((names        (part_1))
+  (flags (:standard -short-paths))
+  (preprocess (pps (ppx_jane)))
+  (libraries (base stdio))))
