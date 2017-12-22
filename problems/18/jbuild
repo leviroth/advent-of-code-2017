@@ -1,10 +1,10 @@
 (jbuild_version 1)
 
 (executables
- ((names        (part_1))
+ ((names        (part_1 part_2))
   (flags (:standard -short-paths))
   (libraries (base stdio))))
 
-(ocamllex (lexer))
+(ocamllex (lexer lexer_2))
 
-(menhir ((modules (parser))))
+(menhir ((modules (parser parser_2))))
