@@ -1,0 +1,7 @@
+(jbuild_version 1)
+
+(executables
+ ((names        (solution))
+  (flags (:standard -short-paths))
+  (preprocess (pps (ppx_compare ppx_sexp_conv)))
+  (libraries (base stdio))))
