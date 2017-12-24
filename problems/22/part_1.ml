@@ -39,4 +39,4 @@ let () =
   let center = (fst dimensions / 2, -(snd dimensions / 2)) in
   let infected = Set.of_list (module Coord) (load_lines lines) in
   loop 0 infected center (0, 1) 0
-  |> printf "Part 1: %d\n"
+  |> printf "%d\n"
